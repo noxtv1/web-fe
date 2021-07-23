@@ -1,5 +1,5 @@
 <template>
-    <div class="w-1/5">Helo from Navbar</div>
+    <div class="w-1/5">Hello from Navbar</div>
 </template>
 
 <script>
