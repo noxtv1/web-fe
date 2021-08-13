@@ -1,6 +1,6 @@
 <template>
-    <div class="mouse flex text-center flex-col items-center">
-        <svg width="24" height="38" viewBox="0 0 30 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <div class="mouse flex text-center flex-col items-center mt-4">
+        <svg width="22" height="36" viewBox="0 0 30 44" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect x="1.5" y="1.5" width="27" height="41" rx="13.5" stroke="#262626" stroke-opacity="0.9" stroke-width="3"/>
 <path d="M1.5 17H29" stroke="#262626" stroke-opacity="0.9" stroke-width="3"/>
 <path d="M15 17V1" stroke="#262626" stroke-opacity="0.9" stroke-width="3"/>
@@ -9,12 +9,15 @@
 <svg class="pt-2" width="20" height="33" viewBox="0 0 24 37" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M13.5 2C13.5 1.17157 12.8284 0.5 12 0.5C11.1716 0.5 10.5 1.17157 10.5 2L13.5 2ZM10.9393 36.0607C11.5251 36.6464 12.4749 36.6464 13.0607 36.0607L22.6066 26.5147C23.1924 25.9289 23.1924 24.9792 22.6066 24.3934C22.0208 23.8076 21.0711 23.8076 20.4853 24.3934L12 32.8787L3.51472 24.3934C2.92893 23.8076 1.97918 23.8076 1.3934 24.3934C0.80761 24.9792 0.80761 25.9289 1.3934 26.5147L10.9393 36.0607ZM10.5 2L10.5 35L13.5 35L13.5 2L10.5 2Z" fill="#262626" fill-opacity="0.9"/>
 </svg>
+
+        <p>{{ title }}</p>
     </div>
 </template>
 
 <script>
 export default {
     name : 'Mouse',
+    props : ['title'],
     components : {
     }
 }
@@ -22,6 +25,6 @@ export default {
 
 <style lang="scss">
     .mouse {
-        min-height: 10vh;
+        flex-grow: 1;
     }
 </style>

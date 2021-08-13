@@ -43,9 +43,7 @@ export default {
 </script>
 
 <style lang="scss">
-    header {
-        max-height: 10vh;
-    }
+
     .logo img {
         height: 60px;
     }
