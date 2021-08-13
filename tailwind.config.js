@@ -7,6 +7,12 @@ module.exports = {
         light: '#FCC195',
         DEFAULT: '#A68267',
       },
+      twitter :{
+        DEFAULT : '#55ACEE'
+      },
+      discord :{
+        DEFAULT : '#6F85D5'
+      },
       white: "#FFFFFF",
       black : "#262626"
     },

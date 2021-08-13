@@ -1,6 +1,6 @@
 <template>
   <article class="border border-black border-opacity-30 p-4">
-    <img src="@/assets/images/thumb1.jpg" alt="" class="border border-camel-light">
+    <img src="@/assets/images/thumb1.jpg" alt="" class="border border-camel-light w-full">
     <div class="text">
         <h2 class="font-medium py-4 text-xl">{{title}}</h2>
         <p class="pb-4 text-base">

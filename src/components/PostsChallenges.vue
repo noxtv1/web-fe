@@ -2,19 +2,22 @@
     <section class="posts-challenges mb-20">
         
         <h2 class="text-3xl font-semibold mt-8 mb-8 py-6">Les nouveaux <span class="text-camel">challenges</span></h2>
-    <article class="grid gap-4 grid-cols-3">
+    <article class="grid gap-8 grid-cols-3">
         <Card
-        v-for="card in cards"
-        :key="card.id"
-        :title="card.title"
-        :text="card.text"
-        />
+        v-for="post in arrayPosts"
+        :key="post.id"
+        :title="post.title"
+        :text="post.textSmall"
+        >
+        </Card>
      </article>
     </section>
 </template>
 
 <script>
 import Card from "@/components/partials/Card.vue"
+import '@/firebase.config.js'
+import {posts} from '@/firebase.config.js'
 
 export default {
  name: 'PostsChallenges',
@@ -23,16 +26,20 @@ export default {
  },
  data() {
      return {
-         cards : [
-             {id :1 ,title : "Stay Connected", text: "Digital World est un design moderne avec une structure créative, un vrai défi pour les amateurs du genre" },
-             {id :2 ,title : "Stay Connected", text: "Digital World est un design moderne avec une structure créative, un vrai défi pour les amateurs du genre" },
-             {id :3 ,title : "Stay Connected", text: "Digital World est un design moderne avec une structure créative, un vrai défi pour les amateurs du genre" },
-             {id :4 ,title : "Stay Connected", text: "Digital World est un design moderne avec une structure créative, un vrai défi pour les amateurs du genre" },
-             {id :5 ,title : "Stay Connected", text: "Digital World est un design moderne avec une structure créative, un vrai défi pour les amateurs du genre" },
-             {id :6 ,title : "Stay Connected", text: "Digital World est un design moderne avec une structure créative, un vrai défi pour les amateurs du genre" }
-         ]
+         arrayPosts : []
      }
- }
+     
+ },
+ mounted() {
+    posts.onSnapshot(snapshot => {
+    snapshot.forEach(doc => {
+        let data = doc.data()
+    this.arrayPosts.push(data)  
+    });
+    })
+    this.arrayPosts.slice(0,2)
+    return this.arrayPosts
+    }
 }
 </script>
 
