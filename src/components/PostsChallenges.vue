@@ -4,7 +4,7 @@
         <h2 class="text-3xl font-semibold mt-8 mb-8 py-6">Les nouveaux <span class="text-camel">challenges</span></h2>
     <article class="grid gap-8 grid-cols-3">
         <Card
-        v-for="post in arrayPosts"
+        v-for="post in limit"
         :key="post.id"
         :title="post.title"
         :text="post.textSmall"
@@ -23,22 +23,26 @@ export default {
  name: 'PostsChallenges',
  components : {
      Card
- },
+ }, 
  data() {
      return {
-         arrayPosts : []
+        arrayPosts : []
      }
      
  },
+ computed : {
+    limit() {
+     return this.arrayPosts.slice(0,6)
+    }
+ },
  mounted() {
     posts.onSnapshot(snapshot => {
-    snapshot.forEach(doc => {
-        let data = doc.data()
-    this.arrayPosts.push(data)  
-    });
+        snapshot.forEach(doc => {
+            let data = doc.data()
+        this.arrayPosts.push(data)  
+        })
+        return this.arrayPosts
     })
-    this.arrayPosts.slice(0,2)
-    return this.arrayPosts
     }
 }
 </script>
