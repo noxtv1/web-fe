@@ -54,7 +54,7 @@ export default {
         max-height: 65vh;
     }
     .fire {
-        transform: translateY(-8px);
+        transform: translateY(10px);
         position: absolute;
     }
 
