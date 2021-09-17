@@ -4,11 +4,8 @@
 
 @layer base {
     body {
-  max-width: 1440px;
-  margin: 0 auto;
   color: #262626;
   @apply font-sans;
-  @apply px-4;
         }
     html {
     font-size: 16px;

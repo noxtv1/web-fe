@@ -1,13 +1,13 @@
 <template>
     <header>
         <nav class="py-4 px-3 flex justify-between">
-        <div class="logo">
+        <div class="logo self-center">
                 <img src="../assets/images/logo.svg" alt="Logo webfrontend.fr">
         </div>
             <ul class="menu lg:flex hidden">
                 <li><router-link to="/">Accueil</router-link></li>
                 <li><router-link to="/Challenges">Challenges</router-link></li>
-                <li><router-link to="/">Communauté</router-link></li>
+                <li><router-link to="/Commu">Communauté</router-link></li>
             </ul>
             <ul class="lg:flex hidden self-center">
                 <li>
@@ -60,9 +60,13 @@ export default {
         }
     }
     a[class="icon"] {
-        @apply px-1;
+        @apply px-14;
     }
     svg {
         display: initial ;
+    }
+    header {
+        box-shadow: 0px 3px 12px 3px rgba(252, 193, 149, 0.25);
+        border-bottom: 1px solid rgba(166, 130, 103, 0.3)
     }
 </style>

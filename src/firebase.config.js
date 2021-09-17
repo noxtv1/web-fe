@@ -1,5 +1,6 @@
 import { firebase } from '@firebase/app'
 import 'firebase/firestore'
+import 'firebase/storage'
 import 'firebase/database'
 
   const firebaseConfig = {
@@ -15,8 +16,12 @@ firebase.initializeApp(firebaseConfig)
 
 // utils
 const db = firebase.firestore()
+var postsImages = firebase.storage().ref();
+
+var storage = firebase.storage();
+
 
 const posts = db.collection('posts')
 export {
-    posts
+    posts, storage, postsImages
 }

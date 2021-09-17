@@ -1,4 +1,5 @@
 <template>
+<div class="container mx-auto">
    <footer class="p-16 flex">
         <div class="info w-6/12 pr-8">
             <img src="@/assets/images/logo.svg" alt="Logo webfrontend" class="pb-8">
@@ -30,6 +31,7 @@
             </div>
         </div>
    </footer>
+</div>
 </template>
 
 <script>

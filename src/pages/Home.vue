@@ -1,6 +1,6 @@
 <template>
   <Hero />
-  <PostsChallenges />
+  <HomeChallenges />
   <Communaute />
 
 </template>
@@ -8,7 +8,7 @@
 <script>
 // @ is an alias to /src
 import Hero from '@/components/Hero.vue'
-import PostsChallenges from '@/components/PostsChallenges.vue'
+import HomeChallenges from '@/components/HomeChallenges.vue'
 import Communaute from '@/components/Communaute.vue'
 
 
@@ -16,7 +16,7 @@ import Communaute from '@/components/Communaute.vue'
 export default {
   name: 'Home',
   components: {
-    Hero, PostsChallenges, Communaute
+    Hero, HomeChallenges, Communaute
   },
 }
 </script>

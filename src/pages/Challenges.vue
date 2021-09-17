@@ -1,18 +1,17 @@
 <template>
-  <main>
     <section class="posts-challenges mb-20">
     <p>Current page is : {{ page }}</p>
     <article class="grid gap-8 grid-cols-3">
         <Card
         v-for="post in arrayPosts"
         :key="post.id"
+        :img="post.img"
+        :id="post.id"
         :title="post.title"
         :text="post.textSmall"
         >
         </Card>
      </article>
-    </section>
-
 
     <v-pagination
     v-model="page"
@@ -21,7 +20,7 @@
     active-color="#545454"
     @update:modelValue="updateHandler"
   />
-  </main>
+      </section>
 </template>
 <script>
 // @ is an alias to /src
@@ -60,15 +59,14 @@ export default {
     posts.onSnapshot(snapshot => {
     snapshot.forEach(doc => {
     let data = doc.data()
-    this.arrayPosts.push(data)
     this.data.push(data)
+    data.id = doc.id
+    // console.log(data);
     this.arrayPosts = this.data.slice(0,9)
       });
     })
     return this.arrayPosts
-    
   },
-  updated() {
-  }
+
 }
 </script>

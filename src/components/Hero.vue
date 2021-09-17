@@ -1,7 +1,7 @@
 <template>
     <section class="hero flex py-20 justify-between flex-wrap">
-    <div class="w-8/12 self-center">
-        <div class="w-3/4">
+    <div class="w-full lg:w-8/12 text-center lg:text-left self-center">
+        <div class="w-full lg:w-3/4">
         <div>
             <h1>Devenez le boss de l’integration web
                 <span class="pl-4 mb-5 fire">
@@ -15,12 +15,36 @@
           
         </div>
             <p class="py-10">Nous mettons à votre dispostion un ensemble de designs pour vous améliorer en developement web</p>
-            <a href="#" class="text-white"><button class="bg-camel mt-2 py-4 px-9 uppercase font-bold text-2xl">Découvrir les challenges</button></a>
+
+            <!-- click -->
+            <a 
+            v-if=active
+            ref="btnActive"
+            @mouseleave="mouseLeave"
+            href="#" class="text-white">
+            <button
+            ref="btn" 
+            class="bg-camel mt-2 py-4 px-9 uppercase font-bold text-2xl">
+            &lt;click&gt;
+            </button></a>
+
+            <!-- text -->
+            <a
+            v-else
+            ref="btnDisable"
+            @mouseover="mouseOver"
+            href="#" class="text-white">
+            <button
+            class="bg-camel mt-2 py-4 px-9 uppercase font-bold text-2xl">Découvrir les challenges
+            </button></a>
+
         </div>
     </div>
-    <div class="w-4/12 flex justify-end">
+    <div class="hidden lg:w-4/12 lg:flex justify-end relative">
         <img src="../assets/images/hero.jpg" alt="Ordinateur avec du code" style="border-radius:10px">
+        <img src="../assets/images/points.png" alt="Petit points" class="absolute dot">
     </div>
+
         <Mouse/>
     </section>
     
@@ -37,12 +61,43 @@ export default {
  },
  data() {
      return {
+        active : false
+     }
+ },
+ methods : {
+     mouseOver() {
+        this.active = true
+        setTimeout(()=> {
+            this.$refs.btn.classList.add("button-active")
+        },10)
+
+        
+     },
+     mouseLeave() {
+        setTimeout(()=> {
+            this.$refs.btn.classList.remove("button-active")
+        },100)
+        setTimeout(()=> {
+            this.active = false
+        },350)
+        
      }
  }
 }
 </script>
 
 <style>
+    .button-active {
+        background-color: #FFF;
+        border: 2px solid #A68267;
+        color : #A68267;
+
+    }
+    button {
+        border: 2px solid #A68267;
+        width: 500px;
+        transition: background-color 0.7s, border 0.1s;
+    }
     .hero p {
         font-size: 1.3rem;
     }
@@ -57,5 +112,24 @@ export default {
         transform: translateY(10px);
         position: absolute;
     }
+    .dot {
+        top: 10%;
+        left: -20px;
+        z-index: -1;
+    }
+@media (max-width: 578px) {
+    button {
+        width: 300px;
+    }
+}
+@media (max-width: 375px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .hero button {
+        font-size: 16px;
+        width: 250px;
+    }
 
+}
 </style>

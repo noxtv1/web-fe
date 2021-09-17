@@ -1,6 +1,8 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '../pages/Home.vue'
 import Challenges from '../pages/Challenges.vue'
+import Commu from '../pages/Commu.vue'
+import SingleChallenge from '../pages/SingleChallenge.vue'
 
 const routes = [
   {
@@ -13,10 +15,17 @@ const routes = [
     name: 'Challenges',
     component: Challenges
   },
-  // {
-  //   path : 'Challenges/:id',
-  //   name : 'ChallengesPage'
-  // }
+     {
+     path : '/Challenges/:id',
+     name : 'SingleChallenge',
+     component : SingleChallenge
+   },
+  {
+    path: '/Commu',
+    name: 'Commu',
+    component: Commu
+  },
+
 ]
 
 const router = createRouter({
