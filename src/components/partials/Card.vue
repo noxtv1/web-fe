@@ -1,6 +1,6 @@
 <template>
   <article class="border border-black border-opacity-30 p-4 flex flex-col">
-    <img v-if="img" :src="imgURL" alt="" class="border border-camel-light w-full">
+    <img v-if="img" :src="this.imgURL" alt="" class="border border-camel-light w-full">
     <div class="text flex flex-col flex-1 justify-between">
         <h2 class="font-medium py-4 text-xl">{{title}}</h2>
         <p class="pb-4 text-base">
@@ -13,16 +13,16 @@
 </template>
 
 <script>
-//import {postsImages} from '@/firebase.config.js'
-import 'firebase/storage'
+import {storage} from '@/firebase.config.js'
+//import {storageRef} from 'firebase/storage'
 export default {
     name : "Card",
+    components : "postsImages",
     props : ['title','text', 'id', 'img'],
     data() {
         return {
             imgURL : "",
-            propsImg : this.img,
-            imgPath: ''
+            imgPath: null
         }
     },
 
@@ -34,7 +34,14 @@ export default {
 
     },
     mounted(){
+        if (this.img) {
+        let path = this.img.path
+        storage.ref().child(path).getDownloadURL()
+        .then(url => {
+            this.imgURL = url
+        })
         }
+            }
     }
 
 </script>

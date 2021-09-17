@@ -52,7 +52,6 @@ export default {
       this.indexStart  = (this.page - 1) * this.pageSize
       this.indexEnd  = this.indexStart + this.pageSize
       this.arrayPosts = this.data.slice(this.indexStart, this.indexEnd)
-      console.log(this.arrayPosts);
     }
   },
   mounted(){

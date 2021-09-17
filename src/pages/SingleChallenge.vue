@@ -1,10 +1,6 @@
 <template>
-<section v-for="item in post"
- :key="item.key"
- :title="item.title"
->
-
-<p> {{ item.title }} </p>
+<section>
+<p>{{post.title}}</p>
 </section>
 </template>
 
@@ -21,14 +17,13 @@ export default {
     methods : {
 
     },
-    mounted() {
+    async mounted() {
     const postId = this.$route.params.id;
     let queryPost = posts.doc(postId);
-    queryPost.get().then((doc) => {
+    await queryPost.get().then((doc) => {
         this.post.push(doc.data())
     })
-
-    console.log(this.post);
+    this.post = JSON.parse(JSON.stringify(this.post[0]))
     }
 }
 </script>

@@ -9,6 +9,7 @@
         :id="post.id"
         :title="post.title"
         :text="post.textSmall"
+        :img="post.img"
         >
         </Card>
      </article>
@@ -42,14 +43,15 @@ export default {
 
  },
  mounted() {
+     //GET DATA FROM POSTS (doc)
     posts.onSnapshot(snapshot => {
         snapshot.forEach(doc => {
             let data = doc.data()
             data.id = doc.id
         this.arrayPosts.push(data)  
         })
-        return this.arrayPosts
     })
+        console.log(this.arrayPosts);
     }
 
 }
