@@ -1,25 +1,49 @@
 <template>
-    <section v-if="load">
-        <p> {{post.title}} </p>
-        <!-- <div v-for="image in slider" :key="image.id">
-            <p>{{image}}</p>
-        </div> -->
+<div v-if="load" class="flex justify-between py-16">
+    <section class="w-5/12 py-8">
+    <carousel :items-to-show="1">
+        <slide v-for="slide in slider" :key="slide.id">
+            <img :src="slide">
+        </slide>
 
-
+        <template #addons>
+            <navigation />
+            <pagination />
+        </template>
+    </carousel>
     </section>
+    
+    <section class="w-6/12">
+        <InfosChallenge :data="post"/>
+    </section>
+</div>
 
+<div v-else>
 
-    <section v-else>
+    <section>
         <p> Loading ... </p>
     </section>
+</div>
 </template>
 
 <script>
 import '@/firebase.config.js'
 import {posts, storage} from '@/firebase.config.js'
 
+import 'vue3-carousel/dist/carousel.css';
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
+import InfosChallenge from '@/components/partials/InfosChallenge.vue'
+
 export default {
     name: "SingleChallenge",
+    components: {
+        Carousel,
+        Slide,
+        Pagination,
+        Navigation,
+        InfosChallenge
+
+    },
     data() {
         return {
         post : null,
@@ -52,13 +76,55 @@ export default {
                 this.slider.push(url)
             })
         })
-        console.log(this.slider);
-
-
     }
 }
 </script>
 
 <style>
+.carousel__pagination-button {
+    @apply bg-camel;
+}
+.carousel__pagination-button {
+    width : 12px;
+    height: 12px;
+    border-radius: 100%;
+    opacity: 0.7;
+    transition: 0.4s;
+    }
+.carousel__pagination-button--active {
+    opacity: 1;
+}
+.carousel img {
+    border-radius: 10px;
+}
+.carousel__icon {
+    fill :#A68267; 
+}
+.carousel__prev {
+    left: -2%;
+        top: 45%;
+}
+.carousel__next {
+    right: -2%;
+        top: 45%;
+}
+.carousel__pagination {
+    @apply py-4;
+}
 
+
+.carousel {
+    position: relative;
+}
+.carousel::before {
+    content:"";
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: -10%;
+    left: 3%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-image: url('~@/assets/images/point1.png');
+}
 </style>

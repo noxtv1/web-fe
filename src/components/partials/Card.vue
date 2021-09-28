@@ -1,5 +1,5 @@
 <template>
-  <article class="border border-black border-opacity-30 p-4 flex flex-col">
+  <article v-if="this.imgLoad" class="border border-black border-opacity-30 p-4 flex flex-col">
     <img v-if="img" :src="this.imgURL" alt="" class="border border-camel-light w-full">
     <div class="text flex flex-col flex-1 justify-between">
         <h2 class="font-medium py-4 text-xl">{{title}}</h2>
@@ -22,7 +22,8 @@ export default {
     data() {
         return {
             imgURL : "",
-            imgPath: null
+            imgPath: null,
+            imgLoad: false
         }
     },
 
@@ -31,7 +32,6 @@ export default {
         post = post.substring(0,99) + " ..."
         return post
         },
-
     },
     mounted(){
         if (this.img) {
@@ -39,6 +39,7 @@ export default {
         storage.ref().child(path).getDownloadURL()
         .then(url => {
             this.imgURL = url
+            this.imgLoad = true
         })
         }
             }

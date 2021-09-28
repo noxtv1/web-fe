@@ -2,7 +2,9 @@
     <header>
         <nav class="py-3 px-3 flex justify-between">
         <div class="logo self-center">
-                <img src="../assets/images/logo.svg" alt="Logo webfrontend.fr">
+                <router-link to="/">
+                    <img src="../assets/images/logo.svg" alt="Logo webfrontend.fr">
+                </router-link>
         </div>
             <ul class="menu lg:flex hidden">
                 <li><router-link to="/">Accueil</router-link></li>

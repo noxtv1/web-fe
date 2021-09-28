@@ -1,26 +1,29 @@
 <template>
-    <section class="posts-challenges mb-20">
-    <p>Current page is : {{ page }}</p>
-    <article class="grid gap-8 grid-cols-3">
-        <Card
-        v-for="post in arrayPosts"
-        :key="post.id"
-        :img="post.img"
-        :id="post.id"
-        :title="post.title"
-        :text="post.textSmall"
-        >
-        </Card>
-     </article>
+    <section v-if="this.load" class="posts-challenges mb-20">
+      <p>Current page is : {{ page }}</p>
+      <article class="grid gap-8 grid-cols-3">
+          <Card
+          v-for="post in arrayPosts"
+          :key="post.id"
+          :img="post.img"
+          :id="post.id"
+          :title="post.title"
+          :text="post.textSmall"
+          >
+          </Card>
+      </article>
+      <v-pagination
+      v-model="page"
+      :pages="5"
+      :range-size="5"
+      active-color="#545454"
+      @update:modelValue="updateHandler"
+      />
+    </section>
+    <section v-else>
+      <p>LOADING ...</p>
+    </section>
 
-    <v-pagination
-    v-model="page"
-    :pages="5"
-    :range-size="5"
-    active-color="#545454"
-    @update:modelValue="updateHandler"
-  />
-      </section>
 </template>
 <script>
 // @ is an alias to /src
@@ -44,7 +47,8 @@ export default {
       data: [],
       pageSize: 9,
       indexStart: 0,
-      indexEnd: 0
+      indexEnd: 0,
+      load: true,
     }
   },
   methods: {
@@ -64,6 +68,7 @@ export default {
     this.arrayPosts = this.data.slice(0,9)
       });
     })
+    this.load = true
     return this.arrayPosts
   },
 
